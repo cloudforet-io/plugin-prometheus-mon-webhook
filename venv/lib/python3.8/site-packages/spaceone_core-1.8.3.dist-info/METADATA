@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: spaceone-core
+Version: 1.8.3
+Summary: SpaceONE core library
+Home-page: https://www.spaceone.dev/
+Author: MEGAZONE SpaceONE Team
+Author-email: admin@spaceone.dev
+License: Apache License 2.0
+Platform: UNKNOWN
+Requires-Dist: grpcio-reflection
+Requires-Dist: google-api-core
+Requires-Dist: grpcio-health-checking
+Requires-Dist: asyncio
+Requires-Dist: PyYAML
+Requires-Dist: unittest-xml-reporting (>=3.0.0)
+Requires-Dist: pycryptodome (==3.8.2)
+Requires-Dist: schedule
+Requires-Dist: cachetools
+Requires-Dist: jwcrypto (==0.7)
+Requires-Dist: python-jose (==3.1.0)
+Requires-Dist: factory-boy
+Requires-Dist: jsonschema
+Requires-Dist: python-dateutil
+Requires-Dist: python-consul
+Requires-Dist: scheduler-cron
+Requires-Dist: click
+Requires-Dist: celery[redis] (==4.4.7)
+Requires-Dist: uvicorn
+Requires-Dist: fastapi
+
+UNKNOWN
+
+
