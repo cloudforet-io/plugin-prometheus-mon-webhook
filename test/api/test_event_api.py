@@ -16,243 +16,198 @@ class TestEvent(TestCase):
 
             },
             "data": {
-
-                    "evalMatches": [
-                        {
-                            "metric": "Count",
-                            "tags": {},
-                            "value": 24.0
-                        }
-                    ],
-                    "orgId": 1.0,
-                    "title": "[Alerting] Database Size alert",
-                    "ruleId": 93.0,
-                    "dashboardId": 58.0,
-                    "tags": {
-                        "jiji": "yoon"
-                    },
-                    "ruleName": "Database Size alert",
-                    "panelId": 5.0,
-                    "ruleUrl": "https://grafana.stargate.cloudeco.io/d/9tvNgo77k/mongodb-database-details_copy-20210818?tab=alert&viewPanel=5&orgId=1",
-                    "message": "데이터베이스~",
-                    "state": "alerting"
-                }
+                "groupLabels": {
+                    "job": "prometheus-kube-prometheus-prometheus"
+                },
+                "alerts": [
+                    {
+                        "status": "firing",
+                        "labels": {
+                            "instance": "172.16.17.80:9090",
+                            "container": "prometheus",
+                            "job": "prometheus-kube-prometheus-prometheus",
+                            "service": "prometheus-kube-prometheus-prometheus",
+                            "endpoint": "web",
+                            "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
+                            "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                            "namespace": "prometheus",
+                            "rule_group": "/etc/prometheus/rules/prometheus-prometheus-kube-prometheus-prometheus-rulefil" +
+                                          "es-0/prometheus-prometheus-kube-prometheus-kubelet.rules.yaml;kubelet.rules",
+                            "severity": "critical",
+                            "alertname": "PrometheusRuleFailures"
+                        },
+                        "annotations": {
+                            "description": "Prometheus prometheus/prometheus-prometheus-kube-prometheus-prometheus-0 has f" +
+                                           "ailed to evaluate 30 rules in the last 5m.",
+                            "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook." +
+                                           "md#alert-name-prometheusrulefailures",
+                            "summary": "Prometheus is failing rule evaluations."
+                        },
+                        "fingerprint": "e2a3b36a4e1832ef",
+                        "generatorURL": "http://prometheus-kube-prometheus-prometheus.prometheus:9090/graph?g0.expr=inc" +
+                                        "rease%28prometheus_rule_evaluation_failures_total%7Bjob%3D%22prometheus-kube-p" +
+                                        "rometheus-prometheus%22%2Cnamespace%3D%22prometheus%22%7D%5B5m%5D%29+%3E+0&g0." +
+                                        "tab=1",
+                        "endsAt": "0001-01-01T00:00:00Z",
+                        "startsAt": "2021-08-23T05:16:56.154Z"
+                    }, {
+                        "generatorURL": "http://prometheus-kube-prometheus-prometheus.prometheus:9090/graph?g0.expr=inc" +
+                                        "rease%28prometheus_rule_evaluation_failures_total%7Bjob%3D%22prometheus-kube-p" +
+                                        "rometheus-prometheus%22%2Cnamespace%3D%22prometheus%22%7D%5B5m%5D%29+%3E+0&g0." +
+                                        "tab=1",
+                        "status": "firing",
+                        "endsAt": "0001-01-01T00:00:00Z",
+                        "annotations": {
+                            "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook." +
+                                           "md#alert-name-prometheusrulefailures",
+                            "summary": "Prometheus is failing rule evaluations.",
+                            "description": "Prometheus prometheus/prometheus-prometheus-kube-prometheus-prometheus-0 has f" +
+                                           "ailed to evaluate 10 rules in the last 5m."
+                        },
+                        "labels": {
+                            "endpoint": "web",
+                            "alertname": "PrometheusRuleFailures",
+                            "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
+                            "container": "prometheus",
+                            "severity": "critical",
+                            "namespace": "prometheus",
+                            "instance": "172.16.17.80:9090",
+                            "job": "prometheus-kube-prometheus-prometheus",
+                            "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                            "service": "prometheus-kube-prometheus-prometheus",
+                            "rule_group": "/etc/prometheus/rules/prometheus-prometheus-kube-prometheus-prometheus-rulefil" +
+                                          "es-0/prometheus-prometheus-kube-prometheus-kubernetes-system-kubelet.yaml;kube" +
+                                          "rnetes-system-kubelet"
+                        },
+                        "startsAt": "2021-08-23T05:16:56.154Z",
+                        "fingerprint": "b81c57e53f0bff63"
+                    }
+                ],
+                "groupKey": "{}/{namespace=\"prometheus\"}:{job=\"prometheus-kube-prometheus-prometheus\"}",
+                "truncatedAlerts": 0.0,
+                "commonLabels": {
+                    "service": "prometheus-kube-prometheus-prometheus",
+                    "alertname": "PrometheusRuleFailures",
+                    "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                    "instance": "172.16.17.80:9090",
+                    "namespace": "prometheus",
+                    "severity": "critical",
+                    "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
+                    "container": "prometheus",
+                    "endpoint": "web",
+                    "job": "prometheus-kube-prometheus-prometheus"
+                },
+                "status": "firing",
+                "commonAnnotations": {
+                    "summary": "Prometheus is failing rule evaluations.",
+                    "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook." +
+                                   "md#alert-name-prometheusrulefailures"
+                },
+                "version": "4",
+                "receiver": "prometheus-spaceone-prometheus-webhook-alert-manager-config-spaceone-prometheu" +
+                            "s-webhook",
+                "externalURL": "http://prometheus-kube-prometheus-alertmanager.prometheus:9093"
+            }
 
         }
         params2 = {
-            "options": {
-
-            },
-            "data": {
-                "evalMatches": [
-                    {
-                        "tags": {
-                            "pod": "grpc-grafana-monitoring-webhook-rajbcnsjbhjszvfv-8b84876q9wq9"
-                        },
-                        "metric": "grpc-grafana-monitoring-webhook-rajbcnsjbhjszvfv-8b84876q9wq9",
-                        "value": 0.15384615384615385
-                    }
-                ],
-                "imageUrl": "https://grafana.stargate.cloudeco.io/public/img/attachments/yo4maLzA629Oh24c1g1g.png",
-                "ruleId": 57.0,
-                "title": "[Alerting] Not Running Pods 0:OK alert",
-                "panelId": 58.0,
-                "state": "alert",
-                "orgId": 1.0,
-                "ruleName": "Not Running Pods 0:OK alert",
-                "ruleUrl": "https://grafana.stargate.cloudeco.io/d/uZaspace/spaceone-dev-cluster-alerts-dashboard?tab=alert&viewPanel=58&orgId=1",
-                "dashboardId": 10.0,
-                "message": "[cloudone-dev-v1-eks-cluster] Not Running Pods 0 is OK\n\nFailure level : WorkerNode\nPanel : Not Running Pods 0:OK\nDataSource : Prometheus\nResource : pod\nThreshold : not running pod count > 0 , every 5m , for 5m",
-                "tags": {
-
-                }
-            }
-        }
-        params3 = {
-            "options": {
-
-            },
-            "data": {
-                "evalMatches": [],
-                "dashboardId": 44.0,
-                "panelId": 14.0,
-                "orgId": 1.0,
-                "ruleName": "Kubelet Runtime Operations Error Rate alert",
-                "state": "ok",
-                "tags": {},
-                "title": "[OK] Kubelet Runtime Operations Error Rate alert",
-                "ruleUrl": "https://grafana.stargate.cloudeco.io/d/6eRS6XR7k/spaceone-dev-cluster-alerts-dashboard-20210621-backup?tab=alert&viewPanel=14&orgId=1",
-                "ruleId": 92.0
-            }
-        }
-
-        params4 = {
-            "options": {
-
-            },
-            "data": {
-                "ruleId": 22.0,
-                "orgId": 1.0,
-                "ruleName": "API Server Request Latency TEMP",
-                "dashboardId": 10.0,
-                "message": "Temporary test Webhook\n- API Server Request Latency",
-                "imageUrl": "https://grafana.stargate.cloudeco.io/public/img/attachments/qmNDGfjVSyG53lu9RmOb.png",
-                "evalMatches": [
-                    {
-                        "tags": {
-                            "pod": "grpc-grafana-monitoring-webhook-rajbcnsjbhjszvfv-8b84876q9wq9",
-                            "LB": "grpc-grafana-monitoring-webhook-rajbcnsjbhjszvfv-jps-8b84876q9wq9"
-                        },
-                        "metric": "grpc-grafana-monitoring-webhook-rajbcnsjbhjszvfv-8b84876q9wq9",
-                        "value": 0.15384615384615385
-                    }
-                ],
-                "title": "[Alerting] API Server Request Latency TEMP",
-                "tags": {
-
+            "options": {},
+            "data":{
+                "externalURL": "http://prometheus-kube-prometheus-alertmanager.prometheus:9093",
+                "commonAnnotations": {
+                    "summary": "Prometheus is failing rule evaluations.",
+                    "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook." +
+                                   "md#alert-name-prometheusrulefailures"
                 },
-                "panelId": 102.0,
-                "state": "alerting",
-                "ruleUrl": "https://grafana.stargate.cloudeco.io/d/uZaspace/spaceone-dev-cluster-alerts-dashboard?tab=alert&viewPanel=102&orgId=1"
-            }
-        }
-        params5 = {"options": {
-        },
-            "data": {
-                "evalMatches": [
+                "version": "4",
+                "status": "firing",
+                "groupLabels": {
+                    "job": "prometheus-kube-prometheus-prometheus"
+                },
+                "commonLabels": {
+                    "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                    "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
+                    "job": "prometheus-kube-prometheus-prometheus",
+                    "severity": "critical",
+                    "service": "prometheus-kube-prometheus-prometheus",
+                    "container": "prometheus",
+                    "endpoint": "web",
+                    "instance": "172.16.17.80:9090",
+                    "alertname": "PrometheusRuleFailures",
+                    "namespace": "prometheus"
+                },
+                "alerts": [
                     {
-                        "tags": {},
-                        "value": 0.020317392596204395,
-                        "metric": "{}"
-                    }
-                ],
-                "ruleId": 92.0,
-                "ruleName": "Kubelet Runtime Operations Error Rate alert",
-                "tags": {},
-                "dashboardId": 44.0,
-                "orgId": 1.0,
-                "panelId": 14.0,
-                "state": "alerting",
-                "title": "[Alerting] Kubelet Runtime Operations Error Rate alert",
-                "ruleUrl": "https://grafana.stargate.cloudeco.io/d/6eRS6XR7k/spaceone-dev-cluster-alerts-dashboard-20210621-backup?tab=alert&viewPanel=14&orgId=1"
-            }
-
-        }
-        params6 = {
-            "options": {},
-            "data": {
-
-                "panelId": 8.0,
-                "orgId": 1.0,
-                "title": "[Alerting] API Server Request Errors alert",
-                "ruleName": "API Server Request Errors alert",
-                "tags": {},
-                "message": "API Server Request Errors",
-                "evalMatches": [
-                    {
-                        "tags": {
-                            "code": "0",
-                            "verb": "WATCH"
+                        "startsAt": "2021-08-23T05:16:56.154Z",
+                        "annotations": {
+                            "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook." +
+                                           "md#alert-name-prometheusrulefailures",
+                            "description": "Prometheus prometheus/prometheus-prometheus-kube-prometheus-prometheus-0 has f" +
+                                           "ailed to evaluate 30 rules in the last 5m.",
+                            "summary": "Prometheus is failing rule evaluations."
                         },
-                        "metric": "0 WATCH",
-                        "value": 0.7647628374624433
+                        "endsAt": "0001-01-01T00:00:00Z",
+                        "labels": {
+                            "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
+                            "severity": "critical",
+                            "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                            "endpoint": "web",
+                            "job": "prometheus-kube-prometheus-prometheus",
+                            "instance": "172.16.17.80:9090",
+                            "alertname": "PrometheusRuleFailures",
+                            "namespace": "prometheus",
+                            "container": "prometheus",
+                            "service": "prometheus-kube-prometheus-prometheus",
+                            "rule_group": "/etc/prometheus/rules/prometheus-prometheus-kube-prometheus-prometheus-rulefil" +
+                                          "es-0/prometheus-prometheus-kube-prometheus-kubelet.rules.yaml;kubelet.rules"
+                        },
+                        "status": "firing",
+                        "fingerprint": "e2a3b36a4e1832ef",
+                        "generatorURL": "http://prometheus-kube-prometheus-prometheus.prometheus:9090/graph?g0.expr=inc" +
+                                        "rease%28prometheus_rule_evaluation_failures_total%7Bjob%3D%22prometheus-kube-p" +
+                                        "rometheus-prometheus%22%2Cnamespace%3D%22prometheus%22%7D%5B5m%5D%29+%3E+0&g0." +
+                                        "tab=1"
                     }, {
-                        "tags": {
-                            "verb": "POST",
-                            "code": "201"
+                        "generatorURL": "http://prometheus-kube-prometheus-prometheus.prometheus:9090/graph?g0.expr=inc" +
+                                        "rease%28prometheus_rule_evaluation_failures_total%7Bjob%3D%22prometheus-kube-p" +
+                                        "rometheus-prometheus%22%2Cnamespace%3D%22prometheus%22%7D%5B5m%5D%29+%3E+0&g0." +
+                                        "tab=1",
+                        "status": "firing",
+                        "labels": {
+                            "endpoint": "web",
+                            "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                            "namespace": "prometheus",
+                            "service": "prometheus-kube-prometheus-prometheus",
+                            "severity": "critical",
+                            "instance": "172.16.17.80:9090",
+                            "job": "prometheus-kube-prometheus-prometheus",
+                            "container": "prometheus",
+                            "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
+                            "alertname": "PrometheusRuleFailures",
+                            "rule_group": "/etc/prometheus/rules/prometheus-prometheus-kube-prometheus-prometheus-rulefil" +
+                                          "es-0/prometheus-prometheus-kube-prometheus-kubernetes-system-kubelet.yaml;kube" +
+                                          "rnetes-system-kubelet"
                         },
-                        "metric": "201 POST",
-                        "value": 0.43159030922294406
+                        "endsAt": "0001-01-01T00:00:00Z",
+                        "fingerprint": "b81c57e53f0bff63",
+                        "annotations": {
+                            "summary": "Prometheus is failing rule evaluations.",
+                            "description": "Prometheus prometheus/prometheus-prometheus-kube-prometheus-prometheus-0 has f" +
+                                           "ailed to evaluate 10 rules in the last 5m.",
+                            "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook." +
+                                           "md#alert-name-prometheusrulefailures"
+                        },
+                        "startsAt": "2021-08-23T05:16:56.154Z"
                     }
                 ],
-                "dashboardId": 44.0,
-                "state": "alerting",
-                "ruleUrl": "https://grafana.stargate.cloudeco.io/d/6eRS6XR7k/spaceone-dev-cluster-alerts-d" +
-                           "ashboard-20210621-backup?tab=alert&viewPanel=8&orgId=1",
-                "ruleId": 90.0
-
+                "receiver": "prometheus-spaceone-prometheus-webhook-alert-manager-config-spaceone-prometheu" +
+                            "s-webhook",
+                "truncatedAlerts": 0.0,
+                "groupKey": "{}/{namespace=\"prometheus\"}:{job=\"prometheus-kube-prometheus-prometheus\"}"
             }
-        }
-
-        params7 = {
-            "options": {},
-            "data":
-                {
-                    "ruleUrl": "https://grafana.stargate.cloudeco.io/d/6eRS6XR7k/spaceone-dev-cluster-alerts-dashboard-20210621-backup?tab=alert&viewPanel=16&orgId=1",
-                    "evalMatches": [
-                        {
-                            "tags": {
-                                "verb": "GET"
-                            },
-                            "value": 0.00953699724356614,
-                            "metric": "GET"
-                        },
-                        {
-                            "value": 0.010471153199535389,
-                            "metric": "PUT",
-                            "tags": {
-                                "verb": "PUT"
-                            }
-                        },
-                        {
-                            "value": 0.003164335949212073,
-                            "metric": "POST",
-                            "tags": {
-                                "verb": "POST"
-                            }
-                        }
-                    ],
-                    "ruleName": "API Server Rest Client Request Latency alert",
-                    "orgId": 1.0,
-                    "ruleId": 81.0,
-                    "message": "detail msg",
-                    "title": "[Alerting] API Server Rest Client Request Latency alert",
-                    "state": "alerting",
-                    "tags": {},
-                    "dashboardId": 44.0,
-                    "panelId": 16.0
-                }
-        }
-        params8 = {
-            'options': {},
-            'data': {
-
-                    "occured_at": "2021-08-23T06:47:42.759Z",
-                    "description": "마이데이타 포탈 테스트의CPU 현재 주의 상태",
-                    "title": "(주의 알림)마이데이타 포탈 테스트/CPU",
-                    "event_type": "ALERT",
-                    "severity": "ALERT",
-                    "alert_id": "alert-f81100e73c00"
-                }
-            }
-        params9 = {
-            'options':{},
-            'data':{
-
-                    "orgId": 1.0,
-                    "tags": {
-                        "tag name": "tag value"
-                    },
-                    "title": "[Alerting]jiyoonkii_Test Panel Title alert",
-                    "state": "alerting",
-                    "dashboardId": 1.0,
-                    "ruleUrl": "http://localhost:3000/d/hZ7BuVbWz/test-dashboard?fullscreen&edit&tab=alert&panelId=2&orgId=1",
-                    "ruleName": "Panel Title alert",
-                    "ruleId": 1.0,
-                    "panelId": 2.0,
-                    "message": "Notification Message",
-                    "evalMatches": [
-                        {
-                            "tags": {},
-                            "metric": "Count",
-                            "value": 1.0
-                        }
-                    ],
-                    "imageUrl": "https://grafana.com/assets/img/blog/mixed_styles.png"
-                }
         }
         #params1, params2, params3, params4,
-        test_cases = [params9]
+        test_cases = [params1, params2]
 
         for idx, test_case in enumerate(test_cases):
             print(f'###### {idx} ########')

@@ -5,9 +5,17 @@ __all__ = ['EventModel']
 
 
 class ResourceModel(Model):
-    resource_id = StringType(serialize_when_none=False)
-    name = StringType(serialize_when_none=False)
-    resource_type = StringType(serialize_when_none=False)
+    pod = StringType(serialize_when_none=False)
+    alertname = StringType(serialize_when_none=False)
+    rule_group = StringType(serialize_when_none=False)
+    namespace = StringType(serialize_when_none=False)
+    instance = StringType(serialize_when_none=False)
+    endpoint = StringType(serialize_when_none=False)
+    job = StringType(serialize_when_none=False)
+    severity = StringType(serialize_when_none=False)
+    prometheus = StringType(serialize_when_none=False)
+    service = StringType(serialize_when_none=False)
+    container = StringType(serialize_when_none=False)
 
 
 class EventModel(Model):
