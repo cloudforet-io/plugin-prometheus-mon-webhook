@@ -23,7 +23,7 @@ class EventManager(BaseManager):
                 if alert.get('fingerprint') == '':
                     _LOGGER.error(ERROR_CHECK_FINGERPRINT())
 
-                event_key = self._generate_event_key(alert.get('fingerprint'))
+                event_key = alert['fingerprint']
                 event_type = self._get_event_type(alert.get('status'))
                 severity = self._get_severity(alert.get('labels', {}).get('severity', ''))
                 title = alert.get('annotations', {}).get('summary', '')
@@ -61,14 +61,6 @@ class EventManager(BaseManager):
 
         except Exception as e:
             raise ERROR_CHECK_VALIDITY(field=e)
-
-    @staticmethod
-    def _generate_event_key(fingerprint):
-        # Event key generation
-        hash_object = hashlib.md5(fingerprint.encode())
-        hashed_event_key = hash_object.hexdigest()
-
-        return hashed_event_key
 
     @staticmethod
     def _get_event_type(status):
