@@ -19,7 +19,7 @@ class EventManager(BaseManager):
         results = []
 
         if len(raw_data.get('alerts')) > 0:
-            for alert in raw_data['alerts']:
+            for alert in raw_data.get('alerts', []):
                 if alert.get('fingerprint') == '':
                     _LOGGER.error(ERROR_CHECK_FINGERPRINT())
 
