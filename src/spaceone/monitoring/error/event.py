@@ -15,3 +15,6 @@ class ERROR_PARSE_EVENT(ERROR_BASE):
 
 class ERROR_CONVERT_DATA_TYPE(ERROR_BASE):
     _message = 'Failed to convert data type'
+
+class ERROR_CHECK_FINGERPRINT(ERROR_BASE):
+    _message = 'Fingerprint of event is missing'
