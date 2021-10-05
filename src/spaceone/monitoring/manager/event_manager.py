@@ -17,8 +17,9 @@ class EventManager(BaseManager):
     def parse(self, raw_data):
 
         results = []
+        print(f'raw_data :{raw_data}')
 
-        if len(raw_data.get('alerts')) > 0:
+        if len(raw_data.get('alerts', [])) > 0:
             for alert in raw_data.get('alerts', []):
                 if alert.get('fingerprint') == '':
                     _LOGGER.error(ERROR_CHECK_FINGERPRINT())
