@@ -7,7 +7,6 @@ from spaceone.core.manager import BaseManager
 from spaceone.monitoring.model.event_response_model import EventModel
 from spaceone.monitoring.error.event import *
 _LOGGER = logging.getLogger(__name__)
-_EXCEPTION_TO_PASS = ["Test notification"]
 
 
 class EventManager(BaseManager):
@@ -17,7 +16,6 @@ class EventManager(BaseManager):
     def parse(self, raw_data):
 
         results = []
-        print(f'raw_data :{raw_data}')
 
         if len(raw_data.get('alerts', [])) > 0:
             for alert in raw_data.get('alerts', []):
