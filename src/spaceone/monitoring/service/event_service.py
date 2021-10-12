@@ -28,7 +28,6 @@ class EventService(BaseService):
         Returns:
             plugin_metric_data_response (dict)
         """
-        print(f'service params :{params}')
         raw_data = params.get('data')
         parsed_event = self.event_mgr.parse(raw_data)
         _LOGGER.debug(f'[EventService: parse] {parsed_event}')
