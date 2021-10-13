@@ -150,7 +150,7 @@ class TestEvent(TestCase):
                         "labels": {
                             "prometheus": "prometheus/prometheus-kube-prometheus-prometheus",
                             "severity": "critical",
-                            "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
+                            # "pod": "prometheus-prometheus-kube-prometheus-prometheus-0",
                             "endpoint": "web",
                             "job": "prometheus-kube-prometheus-prometheus",
                             "instance": "172.16.17.80:9090",
@@ -214,7 +214,6 @@ class TestEvent(TestCase):
             data = test_case.get('data')
             parsed_data = self.monitoring.Event.parse({'options': {}, 'data': data})
             print(parsed_data)
-
 
 
 if __name__ == "__main__":
