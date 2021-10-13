@@ -29,8 +29,8 @@ class EventManager(BaseManager):
                 description = alert.get('annotations', {}).get('description', '')
                 occured_at = alert.get('startsAt', datetime.now())
                 rule = alert.get('labels', {}).get('rule_group')
-                resource = alert.get('labels')
-                additional_info = self._get_additional_info(self, alert)
+                resource = self._get_resource_info(self, alert.get('labels'))
+                additional_info = self._get_additional_info(alert)
 
                 event_dict = {
                     'event_key': event_key,
@@ -46,7 +46,7 @@ class EventManager(BaseManager):
 
                 event_vo = self._check_validity(event_dict)
                 results.append(event_vo)
-                _LOGGER.debug(f'[EventManager] parse Event : {event_dict}')
+                _LOGGER.debug(f'[EventManager: parse] : {event_dict}')
 
         return results
 
@@ -89,7 +89,7 @@ class EventManager(BaseManager):
         return severity_flag
 
     @staticmethod
-    def _get_additional_info(self, alert):
+    def _get_additional_info(alert):
         additional_info = {}
         if 'runbook_url' in alert.get('annotations'):
             additional_info.update({'runbook_url': alert['annotations']['runbook_url']})
@@ -100,4 +100,44 @@ class EventManager(BaseManager):
         if 'endsAt' in alert:
             additional_info.update({'ends_at': str(alert['endsAt'])})
 
+        if 'labels' in alert:
+            for label in alert['labels']:
+                additional_info.update({
+                    label: alert['labels'][label]
+                })
+
         return additional_info
+
+    @staticmethod
+    def _get_resource_info(self, labels):
+        resource_info = {}
+
+        resource_type, resource_name = self._get_representative_resource(labels)
+
+        resource_info.update({
+            'resource_type': resource_type,
+            'resource_name': resource_name
+        })
+        return resource_info
+
+    @staticmethod
+    def _get_representative_resource(labels):
+        resource_type = ''
+        resource_name = ''
+        monitoring_target_resources = ['prometheus', 'job', 'grpc_method', 'job_name', 'horizontalpodautoscaler',
+                                       'phase', 'device', 'controller', 'persistentvolume', 'persistentvolumeclaim',
+                                       'resource', 'daemonset', 'statefulset', 'instance', 'service', 'namespace',
+                                       'deployment', 'container', 'node', 'pod']
+
+        max_index = 0
+        for label in labels:
+            if label in monitoring_target_resources:
+                label_index = monitoring_target_resources.index(label)
+
+                if label_index > max_index:
+                    max_index = label_index
+                    resource_type = label
+                    resource_name = labels[label]
+
+        return resource_type, resource_name
+

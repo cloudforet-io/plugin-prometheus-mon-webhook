@@ -27,4 +27,4 @@ class EventModel(Model):
     resource = ModelType(ResourceModel)
     rule = StringType(default='')
     occurred_at = DateTimeType()
-    additional_info = DictType(StringType(), default={})
+    additional_info = DictType(StringType, default={})
