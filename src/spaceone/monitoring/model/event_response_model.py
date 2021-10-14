@@ -6,7 +6,8 @@ __all__ = ['EventModel']
 
 class ResourceModel(Model):
     resource_type = StringType(serialize_when_none=False)
-    resource_name = StringType(serialize_when_none=False)
+    name = StringType(serialize_when_none=False)
+    resource_id = StringType(serialize_when_none=False)
 
 
 class EventModel(Model):

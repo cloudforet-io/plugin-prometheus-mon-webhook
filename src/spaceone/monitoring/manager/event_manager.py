@@ -111,13 +111,13 @@ class EventManager(BaseManager):
     @staticmethod
     def _get_resource_info(self, labels):
         resource_info = {}
-
-        resource_type, resource_name = self._get_representative_resource(labels)
+        resource_type, name = self._get_representative_resource(labels)
 
         resource_info.update({
             'resource_type': resource_type,
-            'resource_name': resource_name
+            'name': name
         })
+
         return resource_info
 
     @staticmethod
