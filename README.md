@@ -50,23 +50,6 @@ Prometheus Notification Template Data Structure Reference : https://prometheus.i
     }
 }
 ~~~
-
-| Field 	| Example |
-| ---   	| ---     |
-| title		| Pod has been in a non-ready state for more than 15 minutes. |
-| description | Pod prometheus/prometheus-prometheus-node-exporter-xp6jv has been in a non-ready state for longer than 15 minutes. |
-| severity  	| warning, error, critical, info |
-| generatorURL | 1			|
-| 	| 92			|
-| dashboardID	|			|
-| ruleName	| Database Size alert	|
-| panelID	| 5			|
-| ruleUrl	| https://grafana.stargate.cloudeco.io/d/9tvNgo77k/mongodb-database-details_copy-20210818?tab=alert&viewPanel=5&orgId=1 |
-| ImageUrl	| https://grafana.stargate.cloudeco.io/d/9tvNgo77k/mongodb-database-details_copy-20210818?tab=alert&viewPanel=5&orgId=1 |
-| tags		| { "a": "b" } 		|
-| evalMatches	| "evalMatches": [{"value": 342.2222, "metric": "Count", "tags": null}] |
-
-
 ## SpaceONE Event Model
 
 | Field		| Type | Description	| Example	|
