@@ -1,5 +1,5 @@
 
-gname: "[CI]master push"
+name: "[CI]master push"
 
 on:
   repository_dispatch:
