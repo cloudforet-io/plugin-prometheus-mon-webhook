@@ -1,10 +1,10 @@
-
 name: "[CI]master push"
-
 on:
-  repository_dispatch:
-    types: [master_push]
-
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/**'
 env:
   SLACK_WEBHOOK_URL: ${{secrets.SLACK_WEBHOOK_URL}}
 
