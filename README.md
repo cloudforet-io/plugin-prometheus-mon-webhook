@@ -62,7 +62,7 @@ Prometheus Notification Template Data Structure Reference : https://prometheus.i
 | severity | str  | alert level based `raw_data.alert.labels.severity (critical : CRITICAL / error : ERROR / warning: WARNING / info: INFO ` | ERROR |
 | resource | dict | resource which triggered this alert	| ` {'pod':'prometheus-prometheus-node-exporter-xp6jv','alertname': 'KubePodNotReady'}` |
 | raw_data | dict | Prometheus webhook received  data structure | - |
-| addtional_info | dict | `raw_data.alert.annotations` / `raw_data.alert.generatorURL`, `raw_data.alert.endsAt` | `{"org_id": "1.0", "rule_url" "https://...." }` |
+| additional_info | dict | `raw_data.alert.annotations` / `raw_data.alert.generatorURL`, `raw_data.alert.endsAt` | `{"org_id": "1.0", "rule_url" "https://...." }` |
 | occured_at | datetime | prometheus alert triggered time , `alert.startsAt` | `2021-10-12T04:13:01.794Z`|
 | alert_id | str | mapped alert_id	| alert-3243434343 |
 | webhook_id | str  | webhook_id	| webhook-34324234234234 |

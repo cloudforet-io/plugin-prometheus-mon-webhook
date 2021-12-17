@@ -44,14 +44,14 @@ class EventManager(BaseManager):
                     'additional_info': additional_info
                 }
 
-                event_vo = self._check_validity(event_dict)
+                event_vo = self._validate_parsed_event(event_dict)
                 results.append(event_vo)
                 _LOGGER.debug(f'[EventManager: parse] : {event_dict}')
 
         return results
 
     @staticmethod
-    def _check_validity(event_dict):
+    def _validate_parsed_event(event_dict):
         try:
             event_result_model = EventModel(event_dict, strict=False)
             event_result_model.validate()
