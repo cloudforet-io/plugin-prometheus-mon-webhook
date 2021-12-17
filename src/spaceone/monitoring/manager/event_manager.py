@@ -1,6 +1,4 @@
 import logging
-import hashlib
-import json
 from spaceone.core import utils
 from datetime import datetime
 from spaceone.core.manager import BaseManager
@@ -25,8 +23,8 @@ class EventManager(BaseManager):
                 event_key = alert['fingerprint']
                 event_type = self._get_event_type(alert.get('status'))
                 severity = self._get_severity(alert.get('labels', {}).get('severity', ''))
-                title = alert.get('annotations', {}).get('summary', '')
-                description = alert.get('annotations', {}).get('description', '')
+                title = alert.get('annotations', {}).get('summary', 'no title')
+                description = alert.get('annotations', {}).get('description', 'no description')
                 occured_at = alert.get('startsAt', datetime.now())
                 rule = alert.get('labels', {}).get('rule_group')
                 resource = self._get_resource_info(self, alert.get('labels'))
