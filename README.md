@@ -83,7 +83,7 @@ curl -X POST https://your_spaceone_monitoring_webhook_url -d '{}'
 Followings are examples which works for testing your own webhook.
 
 ```
-curl -X POST https://{your_spaceone_monitoring_grafana_webhook_url} -d '{
+curl -X POST https://{your_spaceone_monitoring_prometheus_webhook_url} -d '{
   {
         'version': '4',
         'alerts': [
