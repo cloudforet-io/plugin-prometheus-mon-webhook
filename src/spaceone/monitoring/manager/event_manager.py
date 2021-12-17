@@ -72,6 +72,8 @@ class EventManager(BaseManager):
         info: INFO
 
         CRITICAL | ERROR | WARNING | INFO | NOT_AVAILABLE | NONE(default)
+        (critical : CRITICAL / error : ERROR / warning: WARNING / info: INFO)
+
         ------
         """
         severity_flag = 'NONE'
@@ -120,6 +122,8 @@ class EventManager(BaseManager):
 
     @staticmethod
     def _get_representative_resource(labels):
+        # Since labels selectively have information about resources, parse resource info from the label keys if 'monitoring_target_resources' has.
+
         resource_type = ''
         resource_name = ''
         monitoring_target_resources = ['prometheus', 'job', 'grpc_method', 'job_name', 'horizontalpodautoscaler',
