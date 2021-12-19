@@ -50,6 +50,18 @@ Prometheus Notification Template Data Structure Reference : https://prometheus.i
     }
 }
 ~~~
+
+## Event key criteria
+```fingerprint``` 
+
+## Severity matching information
+|Prometheus  ```severity```| SpaceONE event  ```severity```|
+|---|---|
+|critical|CRITICAL|
+|error|ERROR|
+|warning|WARNING|
+|info|INFO|
+
 ## SpaceONE Event Model
 
 | Field		| Type | Description	| Example	|
