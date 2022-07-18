@@ -41,11 +41,11 @@ Prometheus는 타 서비스와 연동하기 위해 alert manager라는 기능을
 Prometheus의 Alert manager는 Prometheus서버에서 만들어진 Alert을 클라우드포레로 전달하는 역할을 하는 서비스로,  
 Promethues에서 발생하는 Alert 처리를 위해 prometheus에서 Alert manager를 custom resource 형태로 띄웁니다.
 
->본 가이드는 Prometheus에 익숙한 사용자를 대상으로 합니다.  
->Prometheus의 Alert manager 설정에 대한 자세한 내용은 [Alerting Configuration Document](https://prometheus.io/docs/alerting/latest/configuration/) 를 참고 하십시오.  
->Prometheus가 Prometheus-operator helm 차트에서 제공되는 경우 [여기](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/alerting.md) 에서 Alert manager를 구성할 수 있습니다.
+<br>
 
-이제 기본 설정에 대해 알아 보겠습니다.
+### 1) VM에 설치한 경우의 설정
+
+먼저 VM에 Alert manager를 설치한 경우 설정입니다.
 
 (1) 서버에 alert manager를 설치하면 아래와 같이 파일을 확인할 수 있습니다.  
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;설정파일에 해당하는 `alertmanger.yml` 을 열어 수정합니다.
@@ -72,6 +72,33 @@ inhibit_rules:
     target_match:
       severity: 'warning'
     equal: ['alertname', 'dev', 'instance']
+```
+
+<br>
+
+### 2) Kubernetes Operator로 설치한 경우
+
+Kubernetes Operator로 설치할 경우 Alert manager를 사용하려면 사전에 Alert manager가 설치되어야 합니다.  
+보다 자세한 설치 가이드는 [prometheus-operator Github](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/alerting.md#alertmanagerconfig-resource) 을 참고 하십시오.
+
+```markdown
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: AlertmanagerConfig
+metadata:
+  name: config-example
+  labels:
+    alertmanagerConfig: example
+spec:
+	route:
+	  group_by: ['job']
+	  group_wait: 1m
+	  group_interval: 5s
+	  repeat_interval: 2m
+	  receiver: 'cloudforet-alertmanager-webhook'
+	receivers:
+	  - name: 'cloudforet-alertmanager-webhook'
+	    webhook_configs:
+	      - url: 'https://monitoring-webhook.dev.spaceone.dev/monitoring/v1/webhook/webhook-3ffd6714ccaa/edfc36544dced5264cb2507bbdba4f5d/events'
 ```
 
 이제, Alert manager가 설치된 서버에서 발생하는 Alert을 클라우드포레에서 수신할 수 있습니다.
