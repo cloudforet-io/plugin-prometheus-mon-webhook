@@ -89,16 +89,16 @@ metadata:
   labels:
     alertmanagerConfig: example
 spec:
-	route:
-	  group_by: ['job']
-	  group_wait: 1m
-	  group_interval: 5s
-	  repeat_interval: 2m
-	  receiver: 'cloudforet-alertmanager-webhook'
-	receivers:
-	  - name: 'cloudforet-alertmanager-webhook'
-	    webhook_configs:
-	      - url: 'https://monitoring-webhook.dev.spaceone.dev/monitoring/v1/webhook/webhook-3ffd6714ccaa/edfc36544dced5264cb2507bbdba4f5d/events'
+  route:
+    group_by: ['job']
+    group_wait: 1m
+    group_interval: 5s
+    repeat_interval: 2m
+    receiver: 'cloudforet-alertmanager-webhook'
+  receivers:
+  - name: 'cloudforet-alertmanager-webhook'
+    webhook_configs:
+    - url: 'https://monitoring-webhook.dev.spaceone.dev/monitoring/v1/webhook/webhook-3ffd6714ccaa/edfc36544dced5264cb2507bbdba4f5d/events'
 ```
 
 이제, Alert manager가 설치된 서버에서 발생하는 Alert을 클라우드포레에서 수신할 수 있습니다.
