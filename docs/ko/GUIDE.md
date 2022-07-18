@@ -39,11 +39,11 @@ Prometheus는 타 서비스와 연동하기 위해 alert manager라는 기능을
 ## 2. Prometheus Alert manager 설정
 
 Prometheus의 Alert manager는 Prometheus서버에서 만들어진 Alert을 클라우드포레로 전달하는 역할을 하는 서비스로,  
-Promethues cluster에서 발생하는 Alert 처리를 위해 prometheus cluster에서 custom resource 형태로 띄웁니다.
+Promethues에서 발생하는 Alert 처리를 위해 prometheus에서 Alert manager를 custom resource 형태로 띄웁니다.
 
-본 가이드는 Prometheus에 익숙한 사용자를 대상으로 합니다.  
-Prometheus의 Alert manager 설정에 대한 자세한 내용은 [Alerting Configuration Document](https://prometheus.io/docs/alerting/latest/configuration/) 를 참고 하십시오.  
-Prometheus가 Prometheus-operator helm 차트에서 제공되는 경우 [여기](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/alerting.md) 에서 Alert manager를 구성할 수 있습니다.
+>본 가이드는 Prometheus에 익숙한 사용자를 대상으로 합니다.  
+>Prometheus의 Alert manager 설정에 대한 자세한 내용은 [Alerting Configuration Document](https://prometheus.io/docs/alerting/latest/configuration/) 를 참고 하십시오.  
+>Prometheus가 Prometheus-operator helm 차트에서 제공되는 경우 [여기](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/user-guides/alerting.md) 에서 Alert manager를 구성할 수 있습니다.
 
 이제 기본 설정에 대해 알아 보겠습니다.
 
