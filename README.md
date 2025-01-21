@@ -8,45 +8,45 @@ webhook for prometheus
 Prometheus Notification Template Data Structure Reference : https://prometheus.io/docs/alerting/latest/notifications/#data
 ~~~
 {
-    'status': 'firing',
-    'version': '4',
-    'receiver': 'prometheus-spaceone-prometheus-webhook-alert-manager-config-spaceone-prometheus-webhook',
-    'alerts': [
+    "status": "firing",
+    "version": "4",
+    "receiver": "prometheus-spaceone-prometheus-webhook-alert-manager-config-spaceone-prometheus-webhook",
+    "alerts": [
         {
-            'generatorURL': 'http://prometheus-1-kube-promethe-prometheus.default:xxx,
-            'status': 'firing',
-            'annotations': {
-                'description': 'Pod prometheus/prometheus-prometheus-node-exporter-xp6jv has been in a non-ready state for longer than 15 minutes.',
-                'summary': 'Pod has been in a non-ready state for more than 15 minutes.',
-                'runbook_url': 'https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook.'
+            "generatorURL": "http://prometheus-1-kube-promethe-prometheus.default:xxx",
+            "status": "firing",
+            "annotations": {
+                "description": "Pod prometheus/prometheus-prometheus-node-exporter-xp6jv has been in a non-ready state for longer than 15 minutes.",
+                "summary": "Pod has been in a non-ready state for more than 15 minutes.",
+                "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook."
             },
-            'fingerprint': '469fd6fbb9dbabaa',
-            'labels': {
-                'prometheus': 'default/prometheus-1-kube-promethe-prometheus',
-                'severity': 'warning',
-                'namespace': 'prometheus',
-                'pod': 'prometheus-prometheus-node-exporter-xp6jv',
-                'alertname': 'KubePodNotReady'
+            "fingerprint": "469fd6fbb9dbabaa",
+            "labels": {
+                "prometheus": "default/prometheus-1-kube-promethe-prometheus",
+                "severity": "warning",
+                "namespace": "prometheus",
+                "pod": "prometheus-prometheus-node-exporter-xp6jv",
+                "alertname": "KubePodNotReady"
             },
-            'startsAt': '2021-10-12T04:13:01.794Z',
-            'endsAt': '0001-01-01T00:00:00Z'
+            "startsAt": "2021-10-12T04:13:01.794Z",
+            "endsAt": "0001-01-01T00:00:00Z"
         }
     ],
-    'groupLabels': {},
-    'truncatedAlerts': 0.0,
-    'groupKey': '{}/{namespace="prometheus"}:{}',
-    'commonLabels': {
-        'pod': 'prometheus-prometheus-node-exporter-xp6jv',
-        'namespace': 'prometheus',
-        'prometheus': 'default/prometheus-1-kube-promethe-prometheus',
-        'severity': 'warning',
-        'alertname': 'KubePodNotReady'
+    "groupLabels": {},
+    "truncatedAlerts": 0.0,
+    "groupKey": "{}/{namespace=\"prometheus\"}:{}",
+    "commonLabels": {
+        "pod": "prometheus-prometheus-node-exporter-xp6jv",
+        "namespace": "prometheus",
+        "prometheus": "default/prometheus-1-kube-promethe-prometheus",
+        "severity": "warning",
+        "alertname": "KubePodNotReady"
     },
-    'externalURL': 'http://prometheus-1-kube-promethe-alertmanager.default:9093',
-    'commonAnnotations': {
-        'description': 'Pod prometheus/prometheus-prometheus-node-exporter-xp6jv has been in a non-ready state for longer than 15 minutes.',
-        'runbook_url': 'https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook#md#alert-name-kubepodnotready',
-        'summary': 'Pod has been in a non-ready state for more than 15 minutes.'
+    "externalURL": "http://prometheus-1-kube-promethe-alertmanager.default:9093",
+    "commonAnnotations": {
+        "description": "Pod prometheus/prometheus-prometheus-node-exporter-xp6jv has been in a non-ready state for longer than 15 minutes.",
+        "runbook_url": "https://github.com/kubernetes-monitoring/kubernetes-mixin/tree/master/runbook#md#alert-name-kubepodnotready",
+        "summary": "Pod has been in a non-ready state for more than 15 minutes."
     }
 }
 ~~~

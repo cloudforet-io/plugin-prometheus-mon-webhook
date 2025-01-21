@@ -20,14 +20,17 @@ class EventManager(BaseManager):
                 if alert.get('fingerprint') == '':
                     _LOGGER.error(ERROR_CHECK_FINGERPRINT())
 
+                labels = alert.get('labels', {})
+                annotations = alert.get('annotations', {})
+
                 event_key = alert['fingerprint']
                 event_type = self._get_event_type(alert.get('status'))
-                severity = self._get_severity(alert.get('labels', {}).get('severity', ''))
-                title = alert.get('annotations', {}).get('summary', 'no title')
-                description = alert.get('annotations', {}).get('description', 'no description')
-                occured_at = alert.get('startsAt', datetime.now())
-                rule = alert.get('labels', {}).get('rule_group')
-                resource = self._get_resource_info(self, alert.get('labels'))
+                severity = self._get_severity(labels.get('severity', ''))
+                title = self._get_title(labels, annotations)
+                description = annotations.get('description', 'no description')
+                occurred_at = alert.get('startsAt', datetime.now())
+                rule = labels.get('rule_group')
+                resource = self._get_resource_info(self, labels)
                 additional_info = self._get_additional_info(alert)
 
                 event_dict = {
@@ -38,11 +41,12 @@ class EventManager(BaseManager):
                     'rule': rule,
                     'resource': resource,
                     'description': description,
-                    'occurred_at': occured_at,
+                    'occurred_at': occurred_at,
                     'additional_info': additional_info
                 }
 
                 event_vo = self._validate_parsed_event(event_dict)
+                event_vo['occurred_at'] = utils.iso8601_to_datetime(event_vo['occurred_at'])
                 results.append(event_vo)
                 _LOGGER.debug(f'[EventManager: parse] : {event_dict}')
 
@@ -58,6 +62,10 @@ class EventManager(BaseManager):
 
         except Exception as e:
             raise ERROR_CHECK_VALIDITY(field=e)
+
+    @staticmethod
+    def _get_title(labels, annotations):
+        return annotations.get('summary') or labels.get('alertname') or 'no title'
 
     @staticmethod
     def _get_event_type(status):
@@ -76,14 +84,13 @@ class EventManager(BaseManager):
 
         ------
         """
-        severity_flag = 'NONE'
         if severity == 'critical':
             severity_flag = 'CRITICAL'
         elif severity == 'error':
             severity_flag = 'ERROR'
         elif severity == 'warning':
             severity_flag = 'WARNING'
-        elif severity == 'info':
+        else:
             severity_flag = 'INFO'
 
         return severity_flag

@@ -18,5 +18,5 @@ class EventModel(Model):
     severity = StringType(choices=['CRITICAL', 'ERROR', 'WARNING', 'INFO', 'NOT_AVAILABLE', 'NONE'], default='NONE')
     resource = ModelType(ResourceModel)
     rule = StringType(default='')
-    occurred_at = DateTimeType()
+    occurred_at = StringType(required=True)
     additional_info = DictType(StringType, default={})
