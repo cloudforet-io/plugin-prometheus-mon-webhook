@@ -129,24 +129,25 @@ class EventManager(BaseManager):
 
     @staticmethod
     def _get_representative_resource(labels):
-        # Since labels selectively have information about resources, parse resource info from the label keys if 'monitoring_target_resources' has.
+        # Select the most specific resource type based on the priority order in 'monitoring_target_resources'
+        monitoring_target_resources = [
+            'grpc_method', 'job_name', 'job', 'container', 'pod', 'instance', 'node', 'device',
+            'persistentvolumeclaim', 'persistentvolume', 'horizontalpodautoscaler',
+            'daemonset', 'statefulset', 'deployment', 'service', 'resource', 'namespace',
+            'controller', 'phase', 'prometheus'
+        ]
 
-        resource_type = ''
-        resource_name = ''
-        monitoring_target_resources = ['prometheus', 'job', 'grpc_method', 'job_name', 'horizontalpodautoscaler',
-                                       'phase', 'device', 'controller', 'persistentvolume', 'persistentvolumeclaim',
-                                       'resource', 'daemonset', 'statefulset', 'instance', 'service', 'namespace',
-                                       'deployment', 'container', 'node', 'pod']
+        resource_type = None
+        resource_name = None
+        min_index = float('inf')  # Lower index means higher priority
 
-        max_index = 0
-        for label in labels:
+        for label, value in labels.items():
             if label in monitoring_target_resources:
                 label_index = monitoring_target_resources.index(label)
 
-                if label_index > max_index:
-                    max_index = label_index
+                if label_index < min_index:  # Select the resource with the highest priority (lowest index)
+                    min_index = label_index
                     resource_type = label
-                    resource_name = labels[label]
+                    resource_name = value
 
         return resource_type, resource_name
-
