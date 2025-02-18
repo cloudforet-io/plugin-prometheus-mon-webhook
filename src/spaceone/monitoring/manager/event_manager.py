@@ -98,7 +98,7 @@ class EventManager(BaseManager):
     @staticmethod
     def _get_additional_info(alert):
         additional_info = {}
-        if 'runbook_url' in alert.get('annotations'):
+        if 'runbook_url' in alert.get('annotations', {}):
             additional_info.update({'runbook_url': alert['annotations']['runbook_url']})
 
         if 'generatorURL' in alert:
