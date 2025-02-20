@@ -131,10 +131,9 @@ class EventManager(BaseManager):
     def _get_representative_resource(labels):
         # Select the most specific resource type based on the priority order in 'monitoring_target_resources'
         monitoring_target_resources = [
-            'grpc_method', 'job_name', 'job', 'container', 'pod', 'instance', 'node', 'device',
-            'persistentvolumeclaim', 'persistentvolume', 'horizontalpodautoscaler',
-            'daemonset', 'statefulset', 'deployment', 'service', 'resource', 'namespace',
-            'controller', 'phase', 'prometheus'
+            'resource', 'grpc_method', 'instance', 'pod', 'container', 'device', 'persistentvolumeclaim', 'persistentvolume',
+            'deployment', 'daemonset', 'statefulset', 'horizontalpodautoscaler', 'service', 'controller',
+            'job', 'namespace', 'phase', 'severity', 'alertname', 'prometheus'
         ]
 
         resource_type = None
