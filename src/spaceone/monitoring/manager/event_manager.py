@@ -29,7 +29,7 @@ class EventManager(BaseManager):
                 severity = self._get_severity(labels.get("severity", ""))
                 title = self._get_title(labels, annotations)
                 description = annotations.get("description", "no description")
-                occurred_at = alert.get("startsAt", str(datetime.now()))
+                occurred_at = alert.get("startsAt", str(datetime.utcnow()))
                 rule = labels.get("rule_group")
                 resource = self._get_resource_info(self, labels)
                 additional_info = self._get_additional_info(alert)
